@@ -1,7 +1,7 @@
 {
-  "name": "js-ui",
+  "name": "js-w4-v2",
   "version": "0.0.1",
-  "description": "vue2 app ui",
+  "description": "webpack + vue2 by JackStyle",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,18 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jack0888/js-ui.git"
+    "url": "https://github.com/jack0888/js-w4-v2.git"
   },
   "keywords": [
+    "webpack4",
     "vue2",
-    "js-ui"
+    "js-w4-v2"
   ],
   "author": "Jack",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jack0888/js-ui/issues"
+    "url": "https://github.com/jack0888/js-w4-v2/issues"
   },
-  "homepage": "https://github.com/jack0888/js-ui#readme",
+  "homepage": "https://github.com/jack0888/js-w4-v2#readme",
   "devDependencies": {
     "autoprefixer": "^9.1.2",
     "babel-core": "^6.26.3",
@@ -50,10 +51,10 @@
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.11.1",
+    "webpack-cli": "^3.1.0"
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
-    "webpack-cli": "^3.1.0"
   }
 }
