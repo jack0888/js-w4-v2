@@ -47,9 +47,10 @@ module.exports = merge(baseWebpackConfig, {
 
         new webpack.BannerPlugin(pkg.name + ' v' + pkg.version + ' by JackStyle (c) ' + new Date().getFullYear() + ' Licensed ' + pkg.license),
         new webpack.optimize.OccurrenceOrderPlugin(),//OccurrenceOrderPlugin 根据模块调用次数，给模块分配ids，常被调用的ids分配更短的id，使得ids可预测，降低文件大小，该模块推荐使用
+        // Define global var
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: "production"
+                NODE_ENV: '"production"' // '"production"' 或 JSON.stringify('production')
             }
         }),
         // CleanWebpackPlugin

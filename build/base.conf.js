@@ -1,97 +1,32 @@
 const path = require('path');
 
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
+    performance: {
+        hints: process.env.NODE_ENV=='development' ? false : 'warning' // false
+    },
+    resolve: {
+        extensions: [".js", ".json", ".jsx", ".css", '.vue']
+    },
     module: {
         rules: [
-            //{
-            //    test: /\.(js|vue)$/,
-            //    loader: 'eslint-loader',
-            //    enforce: "pre",
-            //    include: [resolve('src')],
-            //    exclude: /node_modules/,
-            //    options: {
-            //        formatter: require('eslint-friendly-formatter')
-            //    }
-            //},
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                exclude: /node_modules/
-            },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use:{
+                exclude: /(node_modules|bower_components)/,
+                use: {
                     loader: 'babel-loader'
                 }
             },
-            {
-                test: /\.less$/,
-                exclude: /node_modules/,
-                include:'/src/',
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            //modules: true
-                        }
-                    }, {
-                        loader: "less-loader"
-                    },{
-                        loader: "postcss"
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                include:'/src/',
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            //modules: true
-                        }
-                    }, {
-                        loader: "vue-style-loader"
-                    },{
-                        loader: "postcss"
-                    }
-                ]
-            },
-            {
-                test: /\.json$/,
-                loader: 'json',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.ttf/,
-                loader: 'file',
-                exclude: /node_modules/
-            },
-            {
-                test: /.(gif|jpg|jpeg|png|svg)$/,
-                use: [
-                    {
-                        loader:'url-loader',
-                        options: {
-                            limit:1024,
-                            name: '[name]-xxx.[ext]'
-                        }
-                    }
-                ]
-            },
+            { test: /\.vue$/, use: 'vue-loader' },
+            { test: /\.css$/, use: ['vue-style-loader', 'style-loader', 'css-loader'] },
+            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
+            { test: /\.scss$/, use: ['style-loader', 'css-loader'] },
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|svgz)$/,
-                use:{
+                use: {
                     loader: 'file-loader',
                     options: {
                         name: 'assets/images/[name].[ext]?[hash]'

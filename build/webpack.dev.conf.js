@@ -19,7 +19,7 @@ module.exports = merge(baseWebpackConfig, {
         path: path.join(__dirname, '../assets'),
         publicPath: '/',
         filename: '[name].js'
-    },
+    },    
     devServer:{
         historyApiFallback: true, // 路由配置，404的页面会自动跳转到/页面
         inline: true, // 文件改变自动刷新页面
@@ -33,9 +33,17 @@ module.exports = merge(baseWebpackConfig, {
         // progress: true, // 显示编译进度 !!有坑，待解决。下同～ 暂时不加这两个属性继续走下去吧～！
         // colors: true, // 使用颜色输出
         contentBase:path.resolve(__dirname,'devRoot'),// 配置开发服务运行时的文件根目录
-        host:'localhost',// 开发服务器监听的主机地址
         compress:true,   // 开发服务器是否启动gzip等压缩
-        port:8080        // 开发服务器监听的端口
+        host:'0.0.0.0',// 开发服务器监听的主机地址 localhost 0.0.0.0
+        port:8008,        // 开发服务器监听的端口
+        // proxy: {
+        //     '/stuWeixinfService/fwp/stuWeixinCharge': {
+        //         target: 'http://58.192.84.191:8080/stuWeixinfService/fwp/stuWeixinCharge.fwp',
+        //         ws: true,
+        //         changeOrigin: true,
+        //         secure: false
+        //     }
+        // }
     },
     plugins: [
         new webpack.DefinePlugin({
